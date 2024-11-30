@@ -103,6 +103,7 @@ python -m src.commands.watch_logs
 ```bash
 python -m src.commands.clear_cache
 ```
+3. Stop the parser:  Ctrl+C 
 
 ## Project Structure
 ```
