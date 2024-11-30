@@ -2,6 +2,9 @@
 
 Telegram bot for monitoring job vacancy channels. Automatically filters and forwards relevant vacancies based on keywords.
 
+![CleanShot 2024-11-30 at 19 41 04](https://github.com/user-attachments/assets/3734e4a1-0978-4924-b1ed-458e18383d39)
+
+
 ## Features
 - Real-time vacancy monitoring in multiple channels
 - Keyword-based filtering with position matching
