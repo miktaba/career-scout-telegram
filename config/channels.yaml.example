@@ -1,0 +1,41 @@
+# Parser settings
+settings:
+  # Cache configuration
+  cache:
+    file: "data/cache/messages_cache.json"  # Path to cache file
+    size: 5000                              # Maximum number of cached messages
+    ttl: 604800                             # Cache TTL in seconds (7 days)
+  
+  # Parser behavior settings
+  parser:
+    days_to_parse: 7                        # Number of days to look back for messages
+    max_retries: 3                          # Number of retry attempts on failure
+    request_delay: 1                        # Delay between requests in seconds
+    timezone: "UTC"                         # Timezone for message timestamps
+    log_level: "INFO"                       # Logging level (DEBUG, INFO, WARNING, ERROR)
+    log_file: "logs/parser.log"            # Path to log file
+    pause_minutes: 60                       # Pause duration between parsing cycles
+
+# List of Telegram channels to monitor
+channels:
+  job_channels:                             # Job vacancy channels
+    - id: "@example_channel"               # Channel username starting with @
+    - id: "@another_channel"               # You can add multiple channels
+    - id: "-1001234567890"                # Or use channel ID directly
+
+# Message filtering settings
+keywords:
+  # Position keywords to search for
+  positions:
+    - "python developer"                    # Keywords can be in any language
+    - "python engineer"                     # Parser will match these exactly
+    - "backend developer"                   # You can use partial matches
+    - "python программист"                  # Multi-language support
+    - "python"                             # Simple keywords also work
+    
+  # Words to exclude from search results
+  stop_words:                               # Messages containing these words
+    - "looking for"                        # will be ignored
+    - "searching"                          # Use common words that indicate
+    - "resume"                             # irrelevant messages
+    - "cv"                                 # like job seekers' posts 
