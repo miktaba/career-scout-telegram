@@ -16,28 +16,37 @@ Telegram bot for monitoring job vacancy channels. Automatically filters and forw
 - Python 3.8 or higher
 - Telegram API credentials:
   - API_ID and API_HASH from https://my.telegram.org
-  - Target channel ID for notifications
+  - Telegram channel or group for monitoring
+  - Target channel ID for notifications (Use @userinfobot to get ID)
 - Internet connection
 - Unix-like OS or Windows
+- Storage for cache and logs
 
-## Installation
+## Quick Start Guide
 
-1. Clone repository:
+1. Get Telegram API credentials:
+   - Go to https://my.telegram.org
+   - Create an application
+   - Save API_ID and API_HASH
+   - Create a channel for notifications
+   - Forward message from target channel to @userinfobot to get channel ID
+
+2. Setup environment:
 ```bash
-git clone https://github.com/yourusername/career-scout-telegram.git
+# Clone and setup
+git clone https://github.com/miktaba/career-scout-telegram.git
 cd career-scout-telegram
-```
 
-2. Create virtual environment:
-```bash
-python -m venv venv
+# Create directories
+mkdir -p data/cache logs
+
+# Create and activate virtual environment
+python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 # or
 venv\Scripts\activate     # Windows
-```
 
-3. Install dependencies:
-```bash
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -87,23 +96,34 @@ keywords:
     - "looking for"
 ```
 
-## Usage
+## Available Commands
 
-1. Start the parser:
+1. Parser control:
 ```bash
+# Start parser
 python -m src.parser
+
+# Stop parser gracefully
+Ctrl+C
 ```
 
-2. Watch logs in real-time:
+2. Monitoring:
 ```bash
+# Watch logs in real-time
 python -m src.commands.watch_logs
-```
 
-3. Clear message cache:
-```bash
+# Clear message cache
 python -m src.commands.clear_cache
 ```
-3. Stop the parser:  Ctrl+C 
+
+3. Development:
+```bash
+# Run tests
+pytest
+
+# Check coverage
+pytest --cov=src tests/
+```
 
 ## Project Structure
 ```
@@ -131,18 +151,28 @@ career-scout-telegram/
 └── setup.py          # Package setup
 ```
 
-## Development
+## Updates and Maintenance
 
-Run tests:
+1. Update repository:
 ```bash
-# Install test dependencies
-pip install pytest pytest-cov pytest-asyncio
+git pull origin main
+pip install -r requirements.txt
+```
 
-# Run tests
-pytest
+2. Clean up:
+```bash
+# Clear cache
+python -m src.commands.clear_cache
 
-# Run with coverage
-pytest --cov=src tests/
+# Remove old logs
+rm logs/*.log
+```
+
+3. Backup:
+```bash
+# Backup configuration
+cp config/channels.yaml config/channels.yaml.backup
+cp .env .env.backup
 ```
 
 ## Troubleshooting
