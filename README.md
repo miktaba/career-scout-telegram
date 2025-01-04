@@ -35,21 +35,31 @@ Telegram bot for monitoring job vacancy channels. Automatically filters and forw
    - Forward message from target channel to @userinfobot to get channel ID
 
 2. Setup environment:
+Clone and setup
 ```bash
-# Clone and setup
 git clone https://github.com/miktaba/career-scout-telegram.git
+```
+```bash
 cd career-scout-telegram
-
-# Create directories
+```
+Create cache directory
+```bash
 mkdir -p data/cache logs
-
-# Create and activate virtual environment
+```
+Create and activate virtual environment
+```bash
 python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-venv\Scripts\activate     # Windows
-
-# Install dependencies
+```
+- Linux/Mac
+```bash
+source venv/bin/activate
+```
+- or Windows
+```bash
+venv\Scripts\activate
+```
+Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
@@ -58,6 +68,8 @@ pip install -r requirements.txt
 1. Create configuration files:
 ```bash
 cp .env.example .env
+```
+```bash
 cp config/channels.yaml.example config/channels.yaml
 ```
 
@@ -102,29 +114,30 @@ keywords:
 ## Available Commands
 
 1. Parser control:
+Start parser
 ```bash
-# Start parser
 python -m src.parser
-
-# Stop parser gracefully
-Ctrl+C
 ```
+Stop parser:
+Ctrl+C
 
 2. Monitoring:
+Watch logs in real-time
 ```bash
-# Watch logs in real-time
 python -m src.commands.watch_logs
-
-# Clear message cache
+```
+Clear message cache
+```bash
 python -m src.commands.clear_cache
 ```
 
 3. Development:
+Run tests
 ```bash
-# Run tests
 pytest
-
-# Check coverage
+```
+Check coverage
+```bash
 pytest --cov=src tests/
 ```
 
